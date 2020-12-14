@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 
 //routes
 const authRouters = require('./routes/auth');
+const adminRouters = require('./routes/admin/auth');
 env.config();
 // mogodb connection
 //mongodb+srv://root:<password>@cluster0.88gpt.mongodb.net/<dbname>?retryWrites=true&w=majority
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api', authRouters);
+app.use('/api', adminRouters);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
